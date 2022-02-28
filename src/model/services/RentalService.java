@@ -8,9 +8,9 @@ public class RentalService {
 	private Double pricePerDay;
 	private Double pricePerHour;
 	
-	private BrazilTaxServices taxService;
+	private TaxService taxService;
 
-	public RentalService(Double pricePerDay, Double pricePerHour, BrazilTaxServices brazilTaxServices) {
+	public RentalService(Double pricePerDay, Double pricePerHour, TaxService brazilTaxServices) {
 		this.pricePerDay = pricePerDay;
 		this.pricePerHour = pricePerHour;
 		this.taxService = brazilTaxServices;
@@ -27,6 +27,7 @@ public class RentalService {
 		
 		double basicPayment;
 		
+		// Arredondamento para cima -> Math.ceil()
 		if(hours <= 12.0) basicPayment = Math.ceil(hours) * pricePerHour;
 		else basicPayment = Math.ceil(hours / 24) * pricePerDay;
 		
